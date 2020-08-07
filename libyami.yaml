@@ -1,0 +1,5 @@
+git_url: https://github.com/intel/libyami.git
+version_control: github
+src_repo: intel/libyami
+tag_prefix: "libyami-"
+seperator: "."
