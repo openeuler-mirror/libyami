@@ -1,10 +1,10 @@
 Name:                libyami
-Version:             1.3.1
-Release:             3
+Version:             1.3.2
+Release:             1
 Summary:             Another Media Infrastructure
 License:             ASL 2.0 and BSD
 URL:                 https://github.com/intel/libyami
-Source0:             https://github.com/intel/libyami/archive/fb48083de91f837ddbf599dd4b5ad1eb1239e1cf/libyami-fb48083.tar.gz 
+Source0:             https://github.com/intel/libyami/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0000:           libyami-libtool-macro.patch
 BuildRequires:       libtool gcc-c++ libva-devel pkgconfig(libdrm) pkgconfig(x11)
 %description
@@ -18,7 +18,7 @@ Libyami-devel package contains libraries and header files used
 for developing applications using libyami.
 
 %prep
-%autosetup -n libyami-fb48083de91f837ddbf599dd4b5ad1eb1239e1cf -p1
+%autosetup -n %{name}-%{version} -p1
 autoreconf -vif
 
 %build
@@ -47,5 +47,8 @@ autoreconf -vif
 %{_libdir}/pkgconfig/libyami.pc
 
 %changelog
+* Tue Jun 29 2021 lingsheng <lingsheng@huawei.com> - 1.3.2-1
+- Update to 1.3.2
+
 * Thu Jun 11 2020 wangchong <wangchong56@huawei.com> - 1.3.1-3
 - package init
