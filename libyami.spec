@@ -1,6 +1,6 @@
 Name:                libyami
 Version:             1.3.2
-Release:             1
+Release:             2
 Summary:             Another Media Infrastructure
 License:             ASL 2.0 and BSD
 URL:                 https://github.com/intel/libyami
@@ -22,6 +22,9 @@ for developing applications using libyami.
 autoreconf -vif
 
 %build
+%if "%toolchain" == "clang"
+	export CXXFLAGS="$CXXFLAGS -Wno-unused-function -Wno-unused-const-variable -Wno-overloaded-virtual -Wno-tautological-constant-out-of-range-compare"
+%endif
 %configure --disable-static --enable-dmabuf --enable-wayland \
            --enable-mpeg2dec --enable-vp9dec --enable-vc1dec \
            --enable-fakedec --enable-jpegenc --enable-vp8svct \
@@ -47,6 +50,9 @@ autoreconf -vif
 %{_libdir}/pkgconfig/libyami.pc
 
 %changelog
+* Sat May 06 2023 yoo <sunyuechi@iscas.ac.cn> - 1.3.2-2
+- fix clang build error
+
 * Tue Jun 29 2021 lingsheng <lingsheng@huawei.com> - 1.3.2-1
 - Update to 1.3.2
 
